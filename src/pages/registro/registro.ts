@@ -21,7 +21,7 @@ export class RegistroPage {
   pass="";
   usuarios=[];
   home=HomePage;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,  public storage:Storage) {
     this.usuarios = this.navParams.get('usuarios');
 
   }
@@ -39,7 +39,7 @@ export class RegistroPage {
       })
 
       this.navCtrl.pop();
-      //this.navCtrl.push(this.home, {usuarios:this.usuarios}) 
+      this.storage.set('usuarios', this.usuarios);
      
     }
     else if (this.mail.length<=0)
